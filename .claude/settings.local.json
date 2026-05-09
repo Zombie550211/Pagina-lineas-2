@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(Get-ChildItem -Path \"E:\\\\Proyectos Connecting\\\\Pagina lineas 2\" -Recurse -Force)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Format-Table -AutoSize)",
+      "WebSearch",
+      "Bash(Remove-Item \"E:\\\\Proyectos Connecting\\\\Pagina lineas 2\\\\portabilidad.html\" -Force)"
+    ]
+  }
+}

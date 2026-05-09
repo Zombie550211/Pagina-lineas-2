@@ -1,0 +1,42 @@
+Prompt para Desarrollo Frontend (React + Tailwind CSS)
+Asunto: Implementación de interfaz UI "Futuristic Glassmorphism" para Órbita Móvil
+
+"Actúa como un Desarrollador Frontend experto en interfaces de alta fidelidad. Tu tarea es codificar una Landing Page responsiva basada en la imagen adjunta, utilizando React y Tailwind CSS.
+
+1. Configuración de Fondo y Estética:
+
+Utiliza la imagen adjunta como background-image principal con background-size: cover y background-attachment: fixed.
+
+Aplica una paleta de colores basada en: Blanco puro (textos), Cian/Azul neón (acentos) y Transparencias.
+
+Implementa el efecto Glassmorphism de la imagen: backdrop-filter: blur(12px) saturate(150%), background: rgba(255, 255, 255, 0.1), y un borde sutil 1px solid rgba(255, 255, 255, 0.2).
+
+2. Estructura de Componentes (Orden descendente):
+
+Navbar: Enlaces flotantes ("INICIO", "PLANES", "PORTABILIDAD", "COBERTURA", "MI ÓRBITA") con tipografía sans-serif moderna, espaciado amplio y efecto hover de brillo inferior.
+
+Hero Section:
+
+Título: "CONECTA CON EL FUTURO" en mayúsculas, color blanco.
+
+Subtítulo: "Portabilidad en minutos. Planes sin fin."
+
+Botón: "INICIAR PORTABILIDAD" con borde redondeado (capsule) y resplandor neón dorado/cian.
+
+Tabla de Servicios (Glass Panel): Crea el panel central con 3 columnas ("SERVICIO", "DESCRIPCIÓN", "BENEFICIOS CLAVE"). Incluye las filas: "PROTABILIDAD", "PLANES 5G+" y "ROAMING GLOBAL". Añade botones pequeños "VER PLANES" dentro de la tabla.
+
+Sección FAQ: Tres paneles cuadrados de cristal alineados horizontalmente. Cada uno con iconos de línea fina para: Facturación, Instalación y Optimización.
+
+Sección Contacto: Banner inferior con dos botones tipo cápsula: "CHAT POR WHATSAPP" (con icono de WhatsApp) y "SOLICITAR LLAMADA".
+
+Footer Dark: Un contenedor final en gris oscuro/negro con 4 columnas de navegación detalladas según la imagen y una barra inferior con iconos sociales y copyright '© 2077 ÓRBITA MOVIL NETWORKS'.
+
+3. Interactividad y Refinamiento:
+
+Usa Framer Motion para que los paneles de cristal tengan una animación de entrada suave (fade-in up).
+
+Los botones deben tener una transición de escala scale-105 al hacer hover.
+
+Asegúrate de que en móviles los paneles horizontales se apilen verticalmente.
+
+Por favor, genera el código completo (JSX y CSS) para que la página sea idéntica a la composición visual de la imagen."
