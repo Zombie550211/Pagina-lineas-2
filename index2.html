@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Líneas Móviles — Planes 5G+ | Órbita Móvil</title>
+	<meta name="description" content="Planes móviles 5G+ desde $30/línea. Portabilidad digital en 24 hrs. Cambia ahora.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+		:root {
+			--bg:       #f0f4f8;
+			--surface:  #ffffff;
+			--glass:    rgba(0,0,0,0.02);
+			--glass-b:  rgba(0,0,0,0.05);
+			--border:   rgba(0,0,0,0.08);
+			--violet:   #7c3aed;
+			--violet-l: #7c3aed;
+			--cyan:     #0891b2;
+			--cyan-l:   #0891b2;
+			--text:     #0f172a;
+			--sub:      #475569;
+			--muted:    #94a3b8;
+		}
+
+		html { scroll-behavior: smooth; }
+
+		body {
+			font-family: 'Space Grotesk', system-ui, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			-webkit-text-size-adjust: 100%;
+			overflow-x: hidden;
+		}
+
+		/* ── NOISE TEXTURE OVERLAY ── */
+		body::before {
+			content: '';
+			position: fixed;
+			inset: 0;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+			pointer-events: none;
+			z-index: 0;
+			opacity: 0.15;
+		}
+
+		/* ── NAVBAR ── */
+		.navbar {
+			position: sticky;
+			top: 0;
+			z-index: 200;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 1.4rem;
+			height: 60px;
+			background: rgba(255,255,255,0.9);
+			backdrop-filter: blur(20px);
+			-webkit-backdrop-filter: blur(20px);
+			border-bottom: 1px solid var(--border);
+			box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+		}
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-weight: 700;
+			font-size: 0.95rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--text);
+		}
+		.brand-dot {
+			width: 8px; height: 8px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--violet), var(--cyan));
+			box-shadow: 0 0 8px var(--cyan);
+		}
+		.nav-links {
+			display: flex;
+			gap: 2rem;
+			list-style: none;
+		}
+		.nav-links a {
+			color: var(--sub);
+			text-decoration: none;
+			font-size: 0.8rem;
+			font-weight: 500;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			transition: color 0.2s;
+		}
+		.nav-links a:hover { color: var(--text); }
+		.nav-toggle {
+			display: none;
+			flex-direction: column;
+			gap: 5px;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 8px;
+			-webkit-tap-highlight-color: transparent;
+		}
+		.nav-toggle span {
+			display: block;
+			width: 22px; height: 2px;
+			background: var(--text);
+			border-radius: 2px;
+			transition: transform 0.3s, opacity 0.3s;
+		}
+		.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+		.nav-toggle.open span:nth-child(2) { opacity: 0; }
+		.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+		@media (max-width: 680px) {
+			.nav-toggle { display: flex; }
+			.nav-links {
+				display: none;
+				position: absolute;
+				top: 60px; left: 0; right: 0;
+				flex-direction: column;
+				gap: 0;
+				background: rgba(255,255,255,0.97);
+				backdrop-filter: blur(20px);
+				border-bottom: 1px solid var(--border);
+				box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+			}
+			.nav-links.open { display: flex; }
+			.nav-links li { width: 100%; }
+			.nav-links a {
+				display: block;
+				padding: 1rem 1.4rem;
+				border-bottom: 1px solid var(--border);
+				font-size: 0.9rem;
+			}
+		}
+
+		/* ── HERO ── */
+		.hero {
+			position: relative;
+			min-height: 92vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 4rem 1.4rem 5rem;
+			overflow: hidden;
+		}
+		.hero-orb {
+			position: absolute;
+			border-radius: 50%;
+			filter: blur(80px);
+			pointer-events: none;
+		}
+		.orb-1 {
+			width: 500px; height: 500px;
+			background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+			top: -100px; left: -150px;
+			animation: drift 12s ease-in-out infinite alternate;
+		}
+		.orb-2 {
+			width: 400px; height: 400px;
+			background: radial-gradient(circle, rgba(8,145,178,0.16) 0%, transparent 70%);
+			bottom: -80px; right: -100px;
+			animation: drift 10s ease-in-out 2s infinite alternate-reverse;
+		}
+		@keyframes drift {
+			from { transform: translate(0,0) scale(1); }
+			to   { transform: translate(40px,30px) scale(1.08); }
+		}
+		.hero-chip {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.45rem;
+			padding: 0.3em 0.9em;
+			border: 1px solid rgba(6,182,212,0.4);
+			border-radius: 999px;
+			font-size: 0.75rem;
+			font-weight: 600;
+			letter-spacing: 0.07em;
+			color: var(--cyan);
+			background: rgba(6,182,212,0.06);
+			margin-bottom: 1.4rem;
+			position: relative; z-index: 1;
+		}
+		.chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s infinite; }
+		@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+		.hero-title {
+			font-size: clamp(2.4rem, 9vw, 5.5rem);
+			font-weight: 700;
+			line-height: 1.05;
+			letter-spacing: -0.02em;
+			color: var(--text);
+			position: relative; z-index: 1;
+			margin-bottom: 1rem;
+		}
+		.hero-title .grad {
+			background: linear-gradient(90deg, var(--violet-l), var(--cyan-l));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+		.hero-sub {
+			font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+			color: var(--sub);
+			font-weight: 400;
+			max-width: 480px;
+			line-height: 1.65;
+			position: relative; z-index: 1;
+			margin-bottom: 2.2rem;
+		}
+		.hero-actions {
+			display: flex;
+			gap: 0.9rem;
+			flex-wrap: wrap;
+			justify-content: center;
+			position: relative; z-index: 1;
+		}
+		.btn-primary {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.75em 1.8em;
+			border-radius: 10px;
+			border: none;
+			font-family: inherit;
+			font-size: 0.9rem;
+			font-weight: 600;
+			letter-spacing: 0.03em;
+			background: linear-gradient(135deg, var(--violet), var(--cyan));
+			color: #fff;
+			cursor: pointer;
+			min-height: 48px;
+			position: relative;
+			transition: opacity 0.2s, transform 0.15s;
+			-webkit-tap-highlight-color: transparent;
+		}
+		.btn-primary::before {
+			content: '';
+			position: absolute;
+			inset: -1px;
+			border-radius: 11px;
+			background: linear-gradient(135deg, var(--violet), var(--cyan));
+			filter: blur(8px);
+			opacity: 0.5;
+			z-index: -1;
+			transition: opacity 0.2s;
+		}
+		.btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+		.btn-primary:hover::before { opacity: 0.8; }
+		.btn-secondary {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.75em 1.8em;
+			border-radius: 10px;
+			border: 1px solid var(--border);
+			font-family: inherit;
+			font-size: 0.9rem;
+			font-weight: 600;
+			letter-spacing: 0.03em;
+			background: var(--glass);
+			color: var(--text);
+			cursor: pointer;
+			min-height: 48px;
+			transition: background 0.2s, border-color 0.2s;
+			-webkit-tap-highlight-color: transparent;
+		}
+		.btn-secondary:hover { background: var(--glass-b); border-color: rgba(255,255,255,0.16); }
+
+		/* ── STATS BAR ── */
+		.stats-bar {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 0;
+			border-top: 1px solid var(--border);
+			border-bottom: 1px solid var(--border);
+			background: var(--surface);
+		}
+		.stat-item {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 1.3rem 2.2rem;
+			border-right: 1px solid var(--border);
+		}
+		.stat-item:last-child { border-right: none; }
+		.stat-icon {
+			width: 40px; height: 40px;
+			border-radius: 10px;
+			background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(8,145,178,0.1));
+			border: 1px solid rgba(124,58,237,0.2);
+			display: flex; align-items: center; justify-content: center;
+			flex-shrink: 0;
+		}
+		.stat-icon svg { width: 18px; height: 18px; stroke: var(--cyan); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+		.stat-val { font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1; }
+		.stat-label { font-size: 0.72rem; color: var(--sub); margin-top: 0.15rem; }
+		@media (max-width: 560px) {
+			.stat-item { padding: 1rem 1.2rem; border-right: none; border-bottom: 1px solid var(--border); width: 50%; }
+			.stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
+			.stat-item:last-child { border-bottom: none; }
+		}
+
+		/* ── SECTION ── */
+		.section {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: clamp(3rem,7vw,4.5rem) 1.2rem;
+		}
+		.sec-label {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			font-size: 0.72rem;
+			font-weight: 600;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--violet-l);
+			margin-bottom: 0.7rem;
+		}
+		.sec-label::before { content: ''; width: 16px; height: 1px; background: var(--violet-l); }
+		.sec-title {
+			font-size: clamp(1.5rem,4.5vw,2.2rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			color: var(--text);
+			line-height: 1.15;
+			margin-bottom: 0.5rem;
+		}
+		.sec-desc {
+			font-size: clamp(0.85rem,2vw,0.95rem);
+			color: var(--sub);
+			max-width: 500px;
+			line-height: 1.65;
+			margin-bottom: 2.2rem;
+		}
+
+		/* ── PLANS ── */
+		.plans-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1px;
+			background: var(--border);
+			border-radius: 18px;
+			overflow: hidden;
+		}
+		.plan-card {
+			background: var(--surface);
+			padding: 1.8rem 1.5rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1.2rem;
+			position: relative;
+			transition: background 0.25s;
+		}
+		.plan-card:hover { background: #f8fafc; }
+		.plan-card.featured {
+			background: linear-gradient(160deg, #faf5ff 0%, #f0f9ff 100%);
+		}
+		.plan-card.featured:hover { background: linear-gradient(160deg, #f5f0ff 0%, #e8f5fd 100%); }
+		.plan-card::before {
+			content: '';
+			position: absolute;
+			top: 0; left: 0; right: 0;
+			height: 3px;
+			opacity: 0;
+			transition: opacity 0.25s;
+		}
+		.plan-card:hover::before { opacity: 1; background: linear-gradient(90deg, var(--violet), var(--cyan)); }
+		.plan-card.featured::before { opacity: 1; background: linear-gradient(90deg, var(--violet), var(--cyan)); }
+		.plan-tag {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.3rem;
+			font-size: 0.68rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			padding: 0.22em 0.7em;
+			border-radius: 6px;
+			width: fit-content;
+		}
+		.tag-featured { background: linear-gradient(90deg,var(--violet),var(--cyan)); color:#fff; }
+		.tag-top { background: rgba(124,58,237,0.15); color: var(--violet-l); border: 1px solid rgba(124,58,237,0.3); }
+		.tag-eco { background: #f1f5f9; color: var(--sub); border: 1px solid var(--border); }
+		.plan-name { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+		.plan-price-row {
+			display: flex;
+			align-items: flex-end;
+			gap: 0.2rem;
+			line-height: 1;
+		}
+		.price-amount {
+			font-size: clamp(2.2rem,6vw,3rem);
+			font-weight: 700;
+			color: var(--text);
+			letter-spacing: -0.03em;
+		}
+		.price-cents { font-size: 1.1rem; font-weight: 600; color: var(--sub); margin-bottom: 0.3rem; }
+		.price-per { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; margin-left: 0.3rem; }
+		.plan-feats {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 0.65rem;
+			flex: 1;
+		}
+		.plan-feats li {
+			display: flex;
+			align-items: center;
+			gap: 0.6rem;
+			font-size: 0.83rem;
+			color: var(--sub);
+		}
+		.plan-feats li svg {
+			width: 15px; height: 15px;
+			stroke: var(--cyan); fill: none;
+			stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+			flex-shrink: 0;
+		}
+		.plan-cta {
+			display: block;
+			text-align: center;
+			padding: 0.7em;
+			border-radius: 9px;
+			border: 1px solid var(--border);
+			font-family: inherit;
+			font-size: 0.82rem;
+			font-weight: 600;
+			color: var(--sub);
+			background: none;
+			cursor: pointer;
+			letter-spacing: 0.03em;
+			transition: border-color 0.2s, color 0.2s, background 0.2s;
+			-webkit-tap-highlight-color: transparent;
+		}
+		.plan-cta:hover { border-color: var(--violet-l); color: var(--violet-l); background: rgba(124,58,237,0.06); }
+		.plan-card.featured .plan-cta {
+			background: linear-gradient(135deg,var(--violet),var(--cyan));
+			border: none;
+			color: #fff;
+		}
+		.plan-card.featured .plan-cta:hover { opacity: 0.9; }
+		.plans-note {
+			text-align: center;
+			font-size: 0.74rem;
+			color: var(--muted);
+			margin-top: 1.2rem;
+			line-height: 1.6;
+		}
+		@media (max-width: 640px) {
+			.plans-grid {
+				grid-template-columns: 1fr;
+				background: none;
+				gap: 0.8rem;
+			}
+			.plan-card {
+				border-radius: 14px;
+				border: 1px solid var(--border);
+			}
+			.plan-card::before { border-radius: 14px 14px 0 0; }
+		}
+		@media (min-width:641px) and (max-width:860px) {
+			.plans-grid { grid-template-columns: 1fr 1fr; }
+		}
+
+		/* ── PORTABILIDAD ── */
+		.port-wrap {
+			background: var(--surface);
+			border-top: 1px solid var(--border);
+			border-bottom: 1px solid var(--border);
+		}
+		.port-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 2rem;
+			align-items: start;
+		}
+		.port-info h3 {
+			font-size: 0.85rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--cyan-l);
+			margin-bottom: 0.8rem;
+		}
+		.port-info p {
+			font-size: 0.88rem;
+			color: var(--sub);
+			line-height: 1.7;
+		}
+		.port-info p strong { color: var(--text); }
+		.port-alert {
+			display: flex;
+			gap: 0.6rem;
+			align-items: flex-start;
+			padding: 0.9rem 1rem;
+			border-radius: 10px;
+			background: rgba(245,158,11,0.07);
+			border: 1px solid rgba(245,158,11,0.2);
+			font-size: 0.8rem;
+			color: #fbbf24;
+			line-height: 1.55;
+			margin-top: 1.2rem;
+		}
+		.port-alert svg { flex-shrink:0; margin-top:1px; width:15px; height:15px; stroke:#fbbf24; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+		/* Timeline */
+		.timeline { display: flex; flex-direction: column; gap: 0; }
+		.tl-item {
+			display: flex;
+			gap: 1rem;
+			padding-bottom: 1.4rem;
+			position: relative;
+		}
+		.tl-item:last-child { padding-bottom: 0; }
+		.tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+		.tl-num {
+			width: 32px; height: 32px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--violet), var(--cyan));
+			display: flex; align-items: center; justify-content: center;
+			font-size: 0.8rem; font-weight: 700; color: #fff;
+			flex-shrink: 0;
+			position: relative; z-index: 1;
+		}
+		.tl-line {
+			width: 1px;
+			flex: 1;
+			background: linear-gradient(to bottom, var(--violet), transparent);
+			margin-top: 4px;
+			min-height: 24px;
+		}
+		.tl-item:last-child .tl-line { display: none; }
+		.tl-body { padding-top: 0.3rem; }
+		.tl-body strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+		.tl-body span { font-size: 0.8rem; color: var(--sub); line-height: 1.6; }
+		@media (max-width: 600px) {
+			.port-grid { grid-template-columns: 1fr; }
+		}
+
+		/* ── BENTO SERVICES ── */
+		.bento {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1px;
+			background: var(--border);
+			border-radius: 18px;
+			overflow: hidden;
+		}
+		.bento-item {
+			background: var(--surface);
+			padding: 1.6rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.8rem;
+			transition: background 0.2s;
+		}
+		.bento-item:hover { background: #f8fafc; }
+		.bento-icon {
+			width: 44px; height: 44px;
+			border-radius: 12px;
+			background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(8,145,178,0.1));
+			border: 1px solid rgba(124,58,237,0.2);
+			display: flex; align-items: center; justify-content: center;
+		}
+		.bento-icon svg { width: 22px; height: 22px; stroke: var(--cyan); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+		.bento-title { font-size: 0.9rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.04em; }
+		.bento-desc { font-size: 0.8rem; color: var(--sub); line-height: 1.6; }
+		@media (max-width: 640px) {
+			.bento { grid-template-columns: 1fr; background: none; gap: 0.7rem; }
+			.bento-item { border-radius: 14px; border: 1px solid var(--border); }
+		}
+		@media (min-width:641px) and (max-width:860px) {
+			.bento { grid-template-columns: 1fr 1fr; }
+		}
+
+		/* ── CTA STRIP ── */
+		.cta-strip {
+			position: relative;
+			overflow: hidden;
+			text-align: center;
+			padding: clamp(3rem,7vw,4.5rem) 1.4rem;
+		}
+		.cta-strip::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(135deg, rgba(124,58,237,0.07) 0%, rgba(8,145,178,0.07) 100%);
+			border-top: 1px solid var(--border);
+			border-bottom: 1px solid var(--border);
+		}
+		.cta-strip > * { position: relative; z-index: 1; }
+		.cta-strip h2 {
+			font-size: clamp(1.4rem,4vw,2rem);
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			color: var(--text);
+			margin-bottom: 0.5rem;
+		}
+		.cta-strip p { font-size: 0.9rem; color: var(--sub); margin-bottom: 1.8rem; }
+
+		/* ── FOOTER ── */
+		.footer {
+			background: #e9eef4;
+			border-top: 1px solid var(--border);
+			padding: clamp(2rem,5vw,3rem) 1.2rem 1.5rem;
+		}
+		.footer-inner {
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+		.footer-top {
+			display: grid;
+			grid-template-columns: 2fr repeat(3,1fr);
+			gap: 2rem;
+			margin-bottom: 2.5rem;
+		}
+		.footer-brand { display: flex; flex-direction: column; gap: 0.7rem; }
+		.footer-brand-name {
+			display: flex; align-items: center; gap: 0.5rem;
+			font-weight: 700; font-size: 0.95rem; letter-spacing: 0.06em;
+			text-transform: uppercase; color: var(--text);
+		}
+		.footer-brand p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; max-width: 220px; }
+		.footer-col h4 {
+			font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+			text-transform: uppercase; color: var(--sub); margin-bottom: 0.9rem;
+		}
+		.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+		.footer-col li { font-size: 0.8rem; color: var(--muted); }
+		.footer-bar {
+			border-top: 1px solid var(--border);
+			padding-top: 1.2rem;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			font-size: 0.72rem;
+			color: var(--muted);
+		}
+		.footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+		@media (max-width: 680px) {
+			.footer-top { grid-template-columns: 1fr 1fr; }
+			.footer-brand { grid-column: 1/-1; }
+		}
+		@media (max-width: 380px) {
+			.footer-top { grid-template-columns: 1fr; }
+		}
+	</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+	<div class="brand">
+		<div class="brand-dot"></div>
+		Líneas Móviles
+	</div>
+	<button class="nav-toggle" id="navToggle" aria-label="Menú" aria-expanded="false">
+		<span></span><span></span><span></span>
+	</button>
+	<ul class="nav-links" id="navLinks">
+		<li><a href="#" onclick="closeNav()">Inicio</a></li>
+		<li><a href="#planes" onclick="closeNav()">Planes</a></li>
+		<li><a href="#portabilidad" onclick="closeNav()">Portabilidad</a></li>
+		<li><a href="#cobertura" onclick="closeNav()">Cobertura</a></li>
+		<li><a href="#contacto" onclick="closeNav()">Contacto</a></li>
+	</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+	<div class="hero-orb orb-1"></div>
+	<div class="hero-orb orb-2"></div>
+	<div class="hero-chip">
+		<div class="chip-dot"></div>
+		5G+ Disponible Ahora
+	</div>
+	<h1 class="hero-title">
+		Tu número,<br>
+		<span class="grad">sin límites.</span>
+	</h1>
+	<p class="hero-sub">Porta tu número en 24 horas y accede a los mejores planes 5G+ desde $30 por línea.</p>
+	<div class="hero-actions">
+		<button class="btn-primary" onclick="document.getElementById('portabilidad').scrollIntoView({behavior:'smooth'})">
+			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="13 6 19 12 13 18"/></svg>
+			Iniciar Portabilidad
+		</button>
+		<button class="btn-secondary" onclick="document.getElementById('planes').scrollIntoView({behavior:'smooth'})">
+			Ver Planes
+		</button>
+	</div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+	<div class="stat-item">
+		<div class="stat-icon">
+			<svg viewBox="0 0 24 24"><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+		</div>
+		<div>
+			<div class="stat-val">5G+</div>
+			<div class="stat-label">Red Profesional</div>
+		</div>
+	</div>
+	<div class="stat-item">
+		<div class="stat-icon">
+			<svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+		</div>
+		<div>
+			<div class="stat-val">Desde $30</div>
+			<div class="stat-label">por línea / mes</div>
+		</div>
+	</div>
+	<div class="stat-item">
+		<div class="stat-icon">
+			<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+		</div>
+		<div>
+			<div class="stat-val">24 hrs</div>
+			<div class="stat-label">Portabilidad</div>
+		</div>
+	</div>
+	<div class="stat-item">
+		<div class="stat-icon">
+			<svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/></svg>
+		</div>
+		<div>
+			<div class="stat-val">100%</div>
+			<div class="stat-label">Digital</div>
+		</div>
+	</div>
+</div>
+
+<!-- PLANES -->
+<div class="section" id="planes">
+	<div class="sec-label">Planes Disponibles</div>
+	<h2 class="sec-title">Elige tu plan ideal</h2>
+	<p class="sec-desc">Sin contratos. Portabilidad incluida. Actívate hoy mismo.</p>
+
+	<div class="plans-grid">
+
+		<!-- Elite -->
+		<div class="plan-card">
+			<span class="plan-tag tag-top">TOP</span>
+			<div class="plan-name">Elite 2.0</div>
+			<div class="plan-price-row">
+				<span class="price-amount">$110</span>
+				<span class="price-cents">.00</span>
+				<span class="price-per">/ línea</span>
+			</div>
+			<ul class="plan-feats">
+				<li>
+					<svg viewBox="0 0 24 24"><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+					5G+ Ilimitado
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+					24 hrs Portabilidad
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+					Roaming Internacional
+				</li>
+			</ul>
+			<button class="plan-cta">Seleccionar Plan</button>
+		</div>
+
+		<!-- Premium — Featured -->
+		<div class="plan-card featured">
+			<span class="plan-tag tag-featured">Más Popular</span>
+			<div class="plan-name">Premium 2.0</div>
+			<div class="plan-price-row">
+				<span class="price-amount">$90</span>
+				<span class="price-cents">.00</span>
+				<span class="price-per">/ línea</span>
+			</div>
+			<ul class="plan-feats">
+				<li>
+					<svg viewBox="0 0 24 24"><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+					5G+ Ilimitado
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+					24 hrs Portabilidad
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+					AutoPay incluido
+				</li>
+			</ul>
+			<button class="plan-cta">Seleccionar Plan</button>
+		</div>
+
+		<!-- Extra -->
+		<div class="plan-card">
+			<span class="plan-tag tag-eco">Más Económico</span>
+			<div class="plan-name">Extra 2.0</div>
+			<div class="plan-price-row">
+				<span class="price-amount">$75</span>
+				<span class="price-cents">.00</span>
+				<span class="price-per">/ línea</span>
+			</div>
+			<ul class="plan-feats">
+				<li>
+					<svg viewBox="0 0 24 24"><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+					5G+ Ilimitado
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+					24 hrs Portabilidad
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+					Desde $30 con 4+ líneas
+				</li>
+			</ul>
+			<button class="plan-cta">Seleccionar Plan</button>
+		</div>
+
+	</div>
+	<p class="plans-note">Precios por línea con AutoPay y factura sin papel. Impuestos adicionales pueden aplicar. El descuento aplica durante los primeros 2 ciclos.</p>
+</div>
+
+<!-- PORTABILIDAD -->
+<div class="port-wrap" id="portabilidad">
+<div class="section">
+	<div class="sec-label">Portabilidad Numérica</div>
+	<h2 class="sec-title">Porta tu número</h2>
+	<p class="sec-desc">Cambia de operadora sin perder tu número. Proceso 100% digital y sin interrupciones.</p>
+
+	<div class="port-grid">
+		<div class="port-info">
+			<h3>Requisitos</h3>
+			<p>Ten a la mano tu <strong>nombre completo</strong> registrado en tu cuenta actual, tu <strong>número de cuenta</strong> del operador anterior y un <strong>PIN de transferencia</strong> (solicítalo directamente a tu operador actual).</p>
+			<div class="port-alert">
+				<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="3"/></svg>
+				<span><strong>Importante:</strong> No canceles tu servicio anterior hasta recibir la confirmación. Cancelarlo antes podría resultar en la pérdida definitiva de tu número.</span>
+			</div>
+		</div>
+
+		<div class="timeline">
+			<div class="tl-item">
+				<div class="tl-left"><div class="tl-num">1</div><div class="tl-line"></div></div>
+				<div class="tl-body">
+					<strong>Tiempo del proceso</strong>
+					<span>La portabilidad suele completarse el mismo día, sin perder servicio en ningún momento.</span>
+				</div>
+			</div>
+			<div class="tl-item">
+				<div class="tl-left"><div class="tl-num">2</div><div class="tl-line"></div></div>
+				<div class="tl-body">
+					<strong>Conserva tu número</strong>
+					<span>La portabilidad numérica es un derecho legal: puedes cambiar de operadora sin cambiar de número.</span>
+				</div>
+			</div>
+			<div class="tl-item">
+				<div class="tl-left"><div class="tl-num">3</div><div class="tl-line"></div></div>
+				<div class="tl-body">
+					<strong>Sin interrupciones</strong>
+					<span>Recibirás un SMS cuando tu servicio esté activo. No canceles tu línea anterior hasta recibirlo.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- SERVICIOS BENTO -->
+<div class="section" id="cobertura">
+	<div class="sec-label">Soporte &amp; Servicios</div>
+	<h2 class="sec-title">Todo lo que necesitas</h2>
+	<p class="sec-desc">Atención 24/7 y herramientas para gestionar tu cuenta en cualquier momento.</p>
+
+	<div class="bento">
+		<div class="bento-item">
+			<div class="bento-icon">
+				<svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+			</div>
+			<div class="bento-title">Facturación y Pagos</div>
+			<div class="bento-desc">Gestiona pagos y facturas en línea de forma segura. Historial completo y métodos flexibles.</div>
+		</div>
+		<div class="bento-item">
+			<div class="bento-icon">
+				<svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+			</div>
+			<div class="bento-title">Instalación y Soporte</div>
+			<div class="bento-desc">Soporte técnico 24/7 para SIM o eSIM. Guías paso a paso y atención personalizada.</div>
+		</div>
+		<div class="bento-item">
+			<div class="bento-icon">
+				<svg viewBox="0 0 24 24"><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+			</div>
+			<div class="bento-title">Optimización de Red</div>
+			<div class="bento-desc">Monitoreo en tiempo real y ajustes automáticos para la mejor conectividad posible.</div>
+		</div>
+	</div>
+</div>
+
+<!-- CTA STRIP -->
+<section class="cta-strip" id="contacto">
+	<h2>¿Listo para conectar?</h2>
+	<p>Un asesor te ayuda a elegir el plan correcto y completa tu portabilidad hoy.</p>
+	<button class="btn-primary" style="font-size:1rem; padding:0.85em 2.2em;">
+		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+		Solicitar Llamada
+	</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+	<div class="footer-inner">
+		<div class="footer-top">
+			<div class="footer-brand">
+				<div class="footer-brand-name">
+					<div class="brand-dot"></div>
+					Órbita Móvil
+				</div>
+				<p>Planes 5G+ y portabilidad numérica. Conectividad sin límites para tu vida digital.</p>
+			</div>
+			<div class="footer-col">
+				<h4>Red</h4>
+				<ul>
+					<li>Cobertura 5G+</li>
+					<li>Tecnología</li>
+					<li>Nodos de Red</li>
+				</ul>
+			</div>
+			<div class="footer-col">
+				<h4>Planes</h4>
+				<ul>
+					<li>Elite 2.0</li>
+					<li>Premium 2.0</li>
+					<li>Extra 2.0</li>
+				</ul>
+			</div>
+			<div class="footer-col">
+				<h4>Atención</h4>
+				<ul>
+					<li>Ayuda</li>
+					<li>Portabilidad</li>
+					<li>Chat Técnico</li>
+					<li>Solicitar Llamada</li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-bar">
+			<span>© 2077 Órbita Móvil Networks</span>
+			<div class="footer-links">
+				<span>Aviso Legal</span>
+				<span>Privacidad</span>
+				<span>Soporte Técnico</span>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script>
+	const toggle = document.getElementById('navToggle');
+	const links  = document.getElementById('navLinks');
+	toggle.addEventListener('click', () => {
+		const open = links.classList.toggle('open');
+		toggle.classList.toggle('open', open);
+		toggle.setAttribute('aria-expanded', open);
+	});
+	function closeNav() {
+		links.classList.remove('open');
+		toggle.classList.remove('open');
+		toggle.setAttribute('aria-expanded', false);
+	}
+	document.addEventListener('click', e => {
+		if (!toggle.contains(e.target) && !links.contains(e.target)) closeNav();
+	});
+</script>
+</body>
+</html>
