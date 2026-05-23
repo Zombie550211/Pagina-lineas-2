@@ -579,112 +579,143 @@
 		}
 		@media (min-width:641px) and (max-width:860px) { .bento { grid-template-columns: 1fr 1fr; } }
 
-		/* ── CTA STRIP ── */
-		.cta-strip {
-			position: relative;
+		/* ── CTA CARD ── */
+		.cta-wrap {
+			padding: 1.5rem 1.2rem 2rem;
+			max-width: 760px;
+			margin: 0 auto;
+		}
+		.cta-card {
+			background: #f0eeff;
+			border-radius: 22px;
+			padding: 2.2rem 1.5rem 2rem;
 			text-align: center;
-			padding: clamp(2.5rem,6vw,4rem) 1.4rem;
+			position: relative;
 			overflow: hidden;
 		}
-		.cta-strip::before {
+		.cta-card::before {
 			content: '';
-			position: absolute; inset: 0;
-			background: linear-gradient(135deg, rgba(124,58,237,0.06) 0%, rgba(37,99,235,0.06) 100%);
-			border-top: 1px solid var(--border);
-			border-bottom: 1px solid var(--border);
+			position: absolute;
+			width: 260px; height: 260px;
+			border-radius: 50%;
+			border: 40px solid rgba(124,58,237,0.07);
+			top: -80px; right: -80px;
+			pointer-events: none;
 		}
-		.cta-strip > * { position: relative; z-index: 1; }
-		.cta-strip h2 { font-size: clamp(1.3rem,3.5vw,1.9rem); font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.4rem; }
-		.cta-strip p  { font-size: 0.9rem; color: var(--sub); margin-bottom: 1.8rem; }
+		.cta-icon-wrap {
+			width: 68px; height: 68px;
+			border-radius: 50%;
+			background: #fff;
+			border: 1.5px solid rgba(124,58,237,0.2);
+			display: flex; align-items: center; justify-content: center;
+			margin: 0 auto 1.2rem;
+		}
+		.cta-icon-wrap svg { width: 30px; height: 30px; stroke: var(--violet); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+		.cta-card h2 { font-size: clamp(1.4rem,4vw,2rem); font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.5rem; }
+		.cta-card p  { font-size: 0.9rem; color: var(--sub); line-height: 1.6; margin-bottom: 1.6rem; max-width: 300px; margin-left: auto; margin-right: auto; }
 		.btn-cta {
-			display: inline-flex;
+			display: flex;
 			align-items: center;
-			gap: 0.5rem;
-			padding: 0.85em 2.2em;
+			justify-content: center;
+			gap: 0.6rem;
+			width: 100%;
+			max-width: 340px;
+			margin: 0 auto;
+			padding: 0.9em 1.5em;
 			border-radius: 999px;
 			border: none;
 			font-family: inherit;
 			font-size: 1rem;
 			font-weight: 700;
-			letter-spacing: 0.03em;
 			background: linear-gradient(135deg, var(--violet), var(--blue));
 			color: #fff;
 			cursor: pointer;
-			min-height: 52px;
-			box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+			min-height: 54px;
+			box-shadow: 0 4px 20px rgba(124,58,237,0.35);
 			transition: opacity 0.2s, transform 0.15s;
 			-webkit-tap-highlight-color: transparent;
 		}
 		.btn-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 
+		/* ── FOOTER LISTA ── */
+		.footer {
+			background: var(--bg);
+			padding: 0 1.2rem 7rem;
+			max-width: 760px;
+			margin: 0 auto;
+		}
+		.footer-list {
+			background: var(--surface);
+			border-radius: 18px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+		}
+		.footer-row {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 1rem 1.1rem;
+			border-bottom: 1px solid var(--border);
+			cursor: pointer;
+			transition: background 0.15s;
+		}
+		.footer-row:last-child { border-bottom: none; }
+		.footer-row:hover { background: #fafbff; }
+		.footer-row-icon {
+			width: 46px; height: 46px;
+			border-radius: 12px;
+			background: #f0eeff;
+			display: flex; align-items: center; justify-content: center;
+			flex-shrink: 0;
+		}
+		.footer-row-icon svg { width: 22px; height: 22px; stroke: var(--violet); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+		.footer-row-body { flex: 1; min-width: 0; }
+		.footer-row-title { font-size: 0.88rem; font-weight: 700; color: var(--text); letter-spacing: 0.04em; text-transform: uppercase; }
+		.footer-row-items { font-size: 0.78rem; color: var(--sub); margin-top: 0.15rem; }
+		.footer-row-chevron svg { width: 16px; height: 16px; stroke: var(--violet); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+		.footer-mini {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.4rem;
+			padding: 1.4rem 0 0.5rem;
+			text-align: center;
+		}
+		.footer-mini-brand { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1rem; color: var(--text); }
+		.footer-mini-brand svg { color: var(--violet); }
+		.footer-mini-copy { font-size: 0.74rem; color: var(--muted); }
+		.footer-mini-links { display: flex; font-size: 0.74rem; color: var(--muted); flex-wrap: wrap; justify-content: center; }
+		.footer-mini-links span { padding: 0 0.7rem; border-right: 1px solid var(--border); line-height: 1; }
+		.footer-mini-links span:last-child { border-right: none; }
+
 		/* ── BOTÓN FIJO ── */
 		.btn-fixed {
 			position: fixed;
-			bottom: 1.5rem;
-			left: 50%;
-			transform: translateX(-50%);
+			bottom: 0;
+			left: 0; right: 0;
 			z-index: 999;
-			display: inline-flex;
+			display: flex;
 			align-items: center;
-			gap: 0.5rem;
-			padding: 0.8em 1.8em;
-			border-radius: 999px;
+			justify-content: center;
+			gap: 0.6rem;
+			padding: 1em 2em;
 			border: none;
 			font-family: inherit;
-			font-size: 0.9rem;
+			font-size: 1rem;
 			font-weight: 700;
-			letter-spacing: 0.05em;
+			letter-spacing: 0.08em;
 			text-transform: uppercase;
-			background: linear-gradient(135deg, var(--violet), var(--blue));
+			background: linear-gradient(90deg, var(--violet), var(--blue));
 			color: #fff;
 			cursor: pointer;
-			min-height: 50px;
-			box-shadow: 0 4px 20px rgba(124,58,237,0.4);
-			transition: box-shadow 0.2s;
+			min-height: 58px;
+			border-radius: 18px 18px 0 0;
+			box-shadow: 0 -4px 20px rgba(124,58,237,0.25);
+			transition: opacity 0.2s;
 			-webkit-tap-highlight-color: transparent;
 		}
-		.btn-fixed:hover { transform: translateX(-50%) translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,0.5); }
-		.btn-fixed:active { transform: translateX(-50%) scale(0.97); }
-
-		/* ── FOOTER ── */
-		.footer {
-			background: #e9eef4;
-			border-top: 1px solid var(--border);
-			padding: clamp(2rem,5vw,3rem) 1.2rem 1.5rem;
-		}
-		.footer-inner { max-width: 1000px; margin: 0 auto; }
-		.footer-top {
-			display: grid;
-			grid-template-columns: 2fr repeat(3,1fr);
-			gap: 2rem;
-			margin-bottom: 2rem;
-		}
-		.footer-brand { display: flex; flex-direction: column; gap: 0.6rem; }
-		.footer-brand-name {
-			display: flex; align-items: center; gap: 0.4rem;
-			font-weight: 800; font-size: 1rem; color: var(--text);
-		}
-		.footer-brand-name svg { color: var(--violet); }
-		.footer-brand p { font-size: 0.77rem; color: var(--muted); line-height: 1.6; max-width: 200px; }
-		.footer-col h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub); margin-bottom: 0.8rem; }
-		.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-		.footer-col li { font-size: 0.79rem; color: var(--muted); }
-		.footer-bar {
-			border-top: 1px solid var(--border);
-			padding-top: 1.1rem;
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			gap: 0.5rem;
-			font-size: 0.71rem;
-			color: var(--muted);
-		}
-		.footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
-		@media (max-width: 680px) {
-			.footer-top { grid-template-columns: 1fr 1fr; }
-			.footer-brand { grid-column: 1/-1; }
-		}
-		@media (max-width: 380px) { .footer-top { grid-template-columns: 1fr; } }
+		.btn-fixed:hover  { opacity: 0.92; }
+		.btn-fixed:active { opacity: 0.85; }
 	</style>
 </head>
 <body>
@@ -997,49 +1028,81 @@
 </div>
 
 <!-- CTA -->
-<section class="cta-strip" id="contacto">
-	<h2>¿Listo para conectar?</h2>
-	<p>Un asesor te ayuda a elegir el plan correcto hoy mismo.</p>
-	<button class="btn-cta">
-		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-		Solicitar Llamada
-	</button>
-</section>
+<div class="cta-wrap" id="contacto">
+	<div class="cta-card">
+		<div class="cta-icon-wrap">
+			<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+		</div>
+		<h2>¿Listo para conectar?</h2>
+		<p>Un asesor te ayuda a elegir el plan correcto hoy mismo.</p>
+		<button class="btn-cta">
+			<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+			Solicitar llamada
+		</button>
+	</div>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
-	<div class="footer-inner">
-		<div class="footer-top">
-			<div class="footer-brand">
-				<div class="footer-brand-name">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
-					CONECTA
-				</div>
-				<p>Planes 5G+ y portabilidad numérica. Conectividad sin límites.</p>
+	<div class="footer-list">
+		<div class="footer-row">
+			<div class="footer-row-icon">
+				<svg viewBox="0 0 24 24"><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
 			</div>
-			<div class="footer-col">
-				<h4>Red</h4>
-				<ul><li>Cobertura 5G+</li><li>Tecnología</li><li>Nodos de Red</li></ul>
+			<div class="footer-row-body">
+				<div class="footer-row-title">Conecta</div>
+				<div class="footer-row-items">Planes 5G+ y portabilidad numérica. Conectividad sin límites.</div>
 			</div>
-			<div class="footer-col">
-				<h4>Planes</h4>
-				<ul><li>Elite 2.0</li><li>Premium 2.0</li><li>Extra 2.0</li></ul>
-			</div>
-			<div class="footer-col">
-				<h4>Atención</h4>
-				<ul><li>Ayuda</li><li>Portabilidad</li><li>Chat Técnico</li><li>Llamada</li></ul>
-			</div>
+			<div class="footer-row-chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
 		</div>
-		<div class="footer-bar">
-			<span>© 2077 Conecta Networks</span>
-			<div class="footer-links"><span>Aviso Legal</span><span>Privacidad</span><span>Soporte</span></div>
+		<div class="footer-row">
+			<div class="footer-row-icon">
+				<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+			</div>
+			<div class="footer-row-body">
+				<div class="footer-row-title">Red</div>
+				<div class="footer-row-items">Cobertura 5G+ · Tecnología · Nodos de Red</div>
+			</div>
+			<div class="footer-row-chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+		</div>
+		<div class="footer-row">
+			<div class="footer-row-icon">
+				<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+			</div>
+			<div class="footer-row-body">
+				<div class="footer-row-title">Planes</div>
+				<div class="footer-row-items">Elite 2.0 · Premium 2.0 · Extra 2.0</div>
+			</div>
+			<div class="footer-row-chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+		</div>
+		<div class="footer-row">
+			<div class="footer-row-icon">
+				<svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+			</div>
+			<div class="footer-row-body">
+				<div class="footer-row-title">Atención</div>
+				<div class="footer-row-items">Ayuda · Portabilidad · Chat Técnico · Llamada</div>
+			</div>
+			<div class="footer-row-chevron"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+		</div>
+	</div>
+	<div class="footer-mini">
+		<div class="footer-mini-brand">
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+			Conecta
+		</div>
+		<div class="footer-mini-copy">© 2077 Conecta Networks</div>
+		<div class="footer-mini-links">
+			<span>Aviso Legal</span>
+			<span>Privacidad</span>
+			<span>Soporte</span>
 		</div>
 	</div>
 </footer>
 
 <!-- BOTÓN FIJO -->
 <button class="btn-fixed" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
-	<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+	<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
 	Llama Ahora
 </button>
 
