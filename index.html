@@ -734,6 +734,8 @@
 			transition: opacity 0.2s;
 			-webkit-tap-highlight-color: transparent;
 			box-sizing: border-box;
+			opacity: 1 !important;
+			transform: none !important;
 		}
 		.btn-fixed:hover  { opacity: 0.92; }
 		.btn-fixed:active { opacity: 0.85; }
@@ -1136,6 +1138,7 @@
 	// Scroll reveal alternando izquierda / derecha
 	const sections = document.querySelectorAll('.stats-bar, .plans-wrap, .port-wrap, .section, .cta-strip, .footer');
 	sections.forEach((el, i) => {
+		if (el.classList.contains('btn-fixed')) return;
 		el.classList.add('reveal');
 		if (i % 2 !== 0) el.classList.add('from-right');
 	});
