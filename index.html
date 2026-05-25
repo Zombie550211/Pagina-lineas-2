@@ -709,7 +709,9 @@
 		.btn-fixed {
 			position: fixed;
 			bottom: 0;
-			left: 0; right: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
 			z-index: 999;
 			display: flex;
 			align-items: center;
@@ -722,6 +724,7 @@
 			font-weight: 700;
 			letter-spacing: 0.08em;
 			text-transform: uppercase;
+			text-decoration: none;
 			background: linear-gradient(90deg, var(--violet), var(--blue));
 			color: #fff;
 			cursor: pointer;
@@ -730,6 +733,7 @@
 			box-shadow: 0 -4px 20px rgba(124,58,237,0.25);
 			transition: opacity 0.2s;
 			-webkit-tap-highlight-color: transparent;
+			box-sizing: border-box;
 		}
 		.btn-fixed:hover  { opacity: 0.92; }
 		.btn-fixed:active { opacity: 0.85; }
