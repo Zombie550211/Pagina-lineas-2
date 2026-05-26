@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Términos y Condiciones | Connecting</title>
+	<style>
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		:root {
+			--violet: #7c3aed;
+			--blue: #2563eb;
+			--bg: #f8f8fb;
+			--text: #1a1a2e;
+			--muted: #6b7280;
+		}
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.7;
+		}
+		/* NAVBAR */
+		.navbar {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			background: rgba(255,255,255,0.95);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid #e5e7eb;
+			padding: 0.9rem 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+		.brand img { height: 32px; width: auto; display: block; }
+		.back-link {
+			margin-left: auto;
+			font-size: 0.875rem;
+			color: var(--violet);
+			text-decoration: none;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			gap: 0.3rem;
+		}
+		.back-link:hover { opacity: 0.8; }
+
+		/* HERO */
+		.hero {
+			background: linear-gradient(135deg, var(--violet), var(--blue));
+			color: #fff;
+			padding: 3rem 1.5rem 2.5rem;
+			text-align: center;
+		}
+		.hero .badge {
+			display: inline-block;
+			background: rgba(255,255,255,0.2);
+			border-radius: 99px;
+			padding: 0.3em 1em;
+			font-size: 0.8rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			margin-bottom: 1rem;
+		}
+		.hero h1 {
+			font-size: clamp(1.6rem, 4vw, 2.4rem);
+			font-weight: 800;
+			margin-bottom: 0.5rem;
+		}
+		.hero p {
+			font-size: 0.95rem;
+			opacity: 0.85;
+		}
+
+		/* CONTENT */
+		.content {
+			max-width: 760px;
+			margin: 0 auto;
+			padding: 2.5rem 1.5rem 5rem;
+		}
+		.section-block {
+			background: #fff;
+			border-radius: 16px;
+			padding: 2rem;
+			margin-bottom: 1.5rem;
+			box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+		}
+		.section-block h2 {
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: var(--violet);
+			margin-bottom: 0.75rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.section-block h2::before {
+			content: '';
+			display: inline-block;
+			width: 4px;
+			height: 1.1em;
+			background: linear-gradient(var(--violet), var(--blue));
+			border-radius: 4px;
+		}
+		.section-block p {
+			color: #374151;
+			font-size: 0.95rem;
+			margin-bottom: 0.75rem;
+		}
+		.section-block p:last-child { margin-bottom: 0; }
+		.section-block ul {
+			padding-left: 1.25rem;
+			color: #374151;
+			font-size: 0.95rem;
+		}
+		.section-block ul li { margin-bottom: 0.4rem; }
+		.highlight {
+			background: linear-gradient(135deg, #f3f0ff, #eff6ff);
+			border-left: 4px solid var(--violet);
+			border-radius: 0 12px 12px 0;
+			padding: 1rem 1.25rem;
+			margin-top: 0.75rem;
+			font-size: 0.9rem;
+			color: #374151;
+		}
+		.info-pills {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			margin-top: 0.75rem;
+		}
+		.pill {
+			background: #f3f0ff;
+			color: var(--violet);
+			border-radius: 99px;
+			padding: 0.3em 0.9em;
+			font-size: 0.82rem;
+			font-weight: 600;
+		}
+
+		/* FOOTER */
+		.page-footer {
+			text-align: center;
+			padding: 2rem 1.5rem;
+			font-size: 0.82rem;
+			color: var(--muted);
+			border-top: 1px solid #e5e7eb;
+		}
+		.page-footer a { color: var(--violet); text-decoration: none; font-weight: 600; }
+
+		/* BOTÓN FIJO */
+		.btn-fixed {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			z-index: 999;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.6rem;
+			padding: 1em 2em;
+			border: none;
+			font-family: inherit;
+			font-size: 1rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			text-decoration: none;
+			background: linear-gradient(90deg, var(--violet), var(--blue));
+			color: #fff;
+			cursor: pointer;
+			min-height: 58px;
+			border-radius: 18px 18px 0 0;
+			box-shadow: 0 -4px 20px rgba(124,58,237,0.25);
+			box-sizing: border-box;
+		}
+		.btn-fixed:hover { opacity: 0.92; }
+	</style>
+</head>
+<body>
+
+<nav class="navbar">
+	<div class="brand">
+		<a href="index.html"><img src="images/logo_connecting.png" alt="Connecting"></a>
+	</div>
+	<a href="index.html" class="back-link">
+		<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+		Volver
+	</a>
+</nav>
+
+<div class="hero">
+	<div class="badge">Legal</div>
+	<h1>Términos y Condiciones</h1>
+	<p>Última actualización: 2026</p>
+</div>
+
+<div class="content">
+
+	<div class="section-block">
+		<p>Este documento rige el uso de nuestro sitio web. Al navegar en <strong>lineas-moviles.com</strong>, el usuario acepta que la información de planes y precios está sujeta a cambios por parte de los proveedores. Nosotros proporcionamos asesoría informativa y técnica, pero el contrato final de servicio se establece entre el cliente y la compañía proveedora seleccionada.</p>
+		<div class="highlight">
+			<strong>Connecting</strong> opera como call center de atención al cliente para servicios de telefonía móvil. Nuestros agentes autorizados atienden llamadas entrantes para verificar disponibilidad y conectar a los usuarios con proveedores participantes.
+		</div>
+		<div class="info-pills" style="margin-top:1rem;">
+			<span class="pill">No somos el proveedor directo del servicio</span>
+			<span class="pill">Precios sujetos a ubicación</span>
+		</div>
+	</div>
+
+	<div class="section-block">
+		<h2>Descripción de los Servicios</h2>
+		<p><strong>lineas-moviles.com</strong> actúa como agente independiente de servicios de telecomunicaciones, facilitando el acceso a:</p>
+		<ul>
+			<li><strong>Telefonía Móvil E-SIM o SIM Física:</strong> Planes de voz, texto y datos mediante redes inalámbricas.</li>
+			<li><strong>Telefonía Móvil y Dispositivos con financiamiento:</strong> Planes de redes ilimitadas, llamadas ilimitadas dentro de todo el continente americano.</li>
+		</ul>
+	</div>
+
+	<div class="section-block">
+		<h2>Elegibilidad y Contratación</h2>
+		<p>Para contratar nuestros servicios, el usuario debe:</p>
+		<ul>
+			<li>Ser mayor de 18 años.</li>
+			<li>Residir en una zona con cobertura garantizada (sujeta a verificación técnica).</li>
+			<li>Proporcionar información veraz y actualizada durante el proceso de venta telefónica.</li>
+		</ul>
+	</div>
+
+	<div class="section-block">
+		<h2>Política de Uso Aceptable</h2>
+		<p>Protegemos tus datos personales conforme a la ley. Los datos recabados en nuestros formularios se utilizan exclusivamente para contactarte y gestionar tu solicitud de servicio.</p>
+		<div class="highlight">
+			<strong>Divulgación de Afiliación:</strong> lineas-moviles.com puede recibir una comisión por parte de los proveedores de servicios cuando un usuario realiza una contratación a través de nuestra plataforma. Esto no genera un costo adicional para el usuario y nos permite mantener nuestro servicio de asesoría gratuito.
+		</div>
+	</div>
+
+	<div class="section-block">
+		<h2>Tarifas, Facturación y Pagos</h2>
+		<p>Todos los precios se muestran en dólares de los Estados Unidos (USD) y podrían incluir impuestos de la zona, del estado y cargos del gobierno federal que correspondan.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>Consentimiento para Comunicaciones (TCPA)</h2>
+		<p>Cuando nos da su número de teléfono en nuestra página web o en formularios, usted está de acuerdo en que le llamemos o le enviemos mensajes. Estos mensajes tratarán sobre cómo configurar su servicio, ayuda técnica y ofertas especiales.</p>
+		<p>Si cambia de opinión, puede pedirnos que no le llamemos más, y lo añadiremos a nuestra lista interna de "No llamar" llamando al <strong>+1 (888) 398-6010</strong>.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>Limitación de Responsabilidad</h2>
+		<p><strong>lineas-moviles.com</strong> no se hará cargo de:</p>
+		<ul>
+			<li>Problemas con el servicio causados por el clima, arreglos en la red o errores en los aparatos del cliente.</li>
+			<li>La pérdida o el daño de información derivado del uso del servicio móvil.</li>
+			<li>La velocidad de datos móviles, que puede variar según la ubicación, cobertura y congestión de la red del operador.</li>
+		</ul>
+	</div>
+
+	<div class="section-block">
+		<h2>Privacidad de los Datos</h2>
+		<p>Tu privacidad es muy importante. La información que recogemos en la llamada de venta, como tu nombre y número de teléfono, se guarda de forma muy segura. Solo la compartimos con las compañías de red que necesitan esta información para que puedas usar tu servicio.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>Modificaciones de los Términos</h2>
+		<p>Mantenemos nuestros términos actualizados para reflejar cambios en las promociones del mercado. Te invitamos a revisar esta sección periódicamente para conocer las condiciones vigentes que aplicarán a tu navegación.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>Contacto</h2>
+		<p>Si tiene preguntas sobre estos Términos y Condiciones, puede contactarnos a través de los canales oficiales publicados en <strong>lineas-moviles.com</strong> o llamando al <strong>+1 (888) 398-6010</strong>.</p>
+	</div>
+
+</div>
+
+<footer class="page-footer">
+	<p>© 2026 Connecting &nbsp;·&nbsp; <a href="privacidad.html">Privacidad</a> &nbsp;·&nbsp; <a href="terminos.html">Términos</a></p>
+</footer>
+
+<a href="tel:+18883986010" class="btn-fixed">
+	<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+	Llama Ahora
+</a>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Política de Privacidad | Connecting</title>
+	<style>
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		:root {
+			--violet: #7c3aed;
+			--blue: #2563eb;
+			--bg: #f8f8fb;
+			--text: #1a1a2e;
+			--muted: #6b7280;
+		}
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.7;
+		}
+		/* NAVBAR */
+		.navbar {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			background: rgba(255,255,255,0.95);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid #e5e7eb;
+			padding: 0.9rem 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+		.brand img { height: 32px; width: auto; display: block; }
+		.back-link {
+			margin-left: auto;
+			font-size: 0.875rem;
+			color: var(--violet);
+			text-decoration: none;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			gap: 0.3rem;
+		}
+		.back-link:hover { opacity: 0.8; }
+
+		/* HERO */
+		.hero {
+			background: linear-gradient(135deg, var(--violet), var(--blue));
+			color: #fff;
+			padding: 3rem 1.5rem 2.5rem;
+			text-align: center;
+		}
+		.hero .badge {
+			display: inline-block;
+			background: rgba(255,255,255,0.2);
+			border-radius: 99px;
+			padding: 0.3em 1em;
+			font-size: 0.8rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			margin-bottom: 1rem;
+		}
+		.hero h1 {
+			font-size: clamp(1.6rem, 4vw, 2.4rem);
+			font-weight: 800;
+			margin-bottom: 0.5rem;
+		}
+		.hero p {
+			font-size: 0.95rem;
+			opacity: 0.85;
+		}
+
+		/* CONTENT */
+		.content {
+			max-width: 760px;
+			margin: 0 auto;
+			padding: 2.5rem 1.5rem 5rem;
+		}
+		.section-block {
+			background: #fff;
+			border-radius: 16px;
+			padding: 2rem;
+			margin-bottom: 1.5rem;
+			box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+		}
+		.section-block h2 {
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: var(--violet);
+			margin-bottom: 0.75rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+		.section-block h2::before {
+			content: '';
+			display: inline-block;
+			width: 4px;
+			height: 1.1em;
+			background: linear-gradient(var(--violet), var(--blue));
+			border-radius: 4px;
+		}
+		.section-block p {
+			color: #374151;
+			font-size: 0.95rem;
+			margin-bottom: 0.75rem;
+		}
+		.section-block p:last-child { margin-bottom: 0; }
+		.section-block ul {
+			padding-left: 1.25rem;
+			color: #374151;
+			font-size: 0.95rem;
+		}
+		.section-block ul li { margin-bottom: 0.4rem; }
+		.highlight {
+			background: linear-gradient(135deg, #f3f0ff, #eff6ff);
+			border-left: 4px solid var(--violet);
+			border-radius: 0 12px 12px 0;
+			padding: 1rem 1.25rem;
+			margin-top: 0.75rem;
+			font-size: 0.9rem;
+			color: #374151;
+		}
+
+		/* FOOTER */
+		.page-footer {
+			text-align: center;
+			padding: 2rem 1.5rem;
+			font-size: 0.82rem;
+			color: var(--muted);
+			border-top: 1px solid #e5e7eb;
+		}
+		.page-footer a { color: var(--violet); text-decoration: none; font-weight: 600; }
+
+		/* BOTÓN FIJO */
+		.btn-fixed {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			z-index: 999;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.6rem;
+			padding: 1em 2em;
+			border: none;
+			font-family: inherit;
+			font-size: 1rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			text-decoration: none;
+			background: linear-gradient(90deg, var(--violet), var(--blue));
+			color: #fff;
+			cursor: pointer;
+			min-height: 58px;
+			border-radius: 18px 18px 0 0;
+			box-shadow: 0 -4px 20px rgba(124,58,237,0.25);
+			box-sizing: border-box;
+		}
+		.btn-fixed:hover { opacity: 0.92; }
+	</style>
+</head>
+<body>
+
+<nav class="navbar">
+	<div class="brand">
+		<a href="index.html"><img src="images/logo_connecting.png" alt="Connecting"></a>
+	</div>
+	<a href="index.html" class="back-link">
+		<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+		Volver
+	</a>
+</nav>
+
+<div class="hero">
+	<div class="badge">Legal</div>
+	<h1>Política de Privacidad</h1>
+	<p>Última actualización: 2026</p>
+</div>
+
+<div class="content">
+
+	<div class="section-block">
+		<p>En <strong>lineas-moviles.com</strong>, nos preocupamos por su privacidad y nos dedicamos a cuidar sus datos personales. Este documento explica de qué manera obtenemos, manejamos y resguardamos su información cuando navega en nuestro sitio web o usa nuestros servicios de telefonía móvil en Estados Unidos.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>1. Información que Recopilamos</h2>
+		<p>Para brindarle nuestros servicios de telecomunicaciones, es posible que recopilemos la siguiente información:</p>
+		<ul>
+			<li><strong>Datos de contacto:</strong> su nombre, número de teléfono, correo electrónico e identificación necesaria para activar su línea móvil.</li>
+		</ul>
+	</div>
+
+	<div class="section-block">
+		<h2>2. Uso de la Información</h2>
+		<p>Usamos los datos que recopilamos para tramitar sus pedidos de servicio y habilitar sus líneas móviles.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>3. Compartición de Datos con Terceros</h2>
+		<p>No comercializamos ni arrendamos sus datos personales a otras empresas.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>4. Seguridad de la Información</h2>
+		<p>Hemos puesto en marcha medidas de seguridad tanto técnicas como administrativas para resguardar su información de accesos indebidos, extravíos o modificaciones.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>5. Derechos del Usuario</h2>
+		<p><strong>Privacidad de la Información de Red del Cliente (CPNI):</strong> Protegemos su CPNI (datos sobre sus facturas, destinos de llamadas, etc.) de acuerdo con las leyes federales de EE. UU.</p>
+		<p><strong>Exclusión (Opt-Out):</strong> Usted puede solicitar dejar de recibir llamadas promocionales o correos electrónicos de marketing en cualquier momento.</p>
+	</div>
+
+	<div class="section-block">
+		<h2>6. Uso de Cookies y Publicidad</h2>
+		<p>Nuestro sitio utiliza cookies propias y de terceros con los siguientes fines:</p>
+		<ul>
+			<li><strong>Cookies funcionales:</strong> para recordar sus preferencias de navegación.</li>
+			<li><strong>Cookies analíticas:</strong> para entender cómo los usuarios interactúan con el sitio.</li>
+			<li><strong>Cookies publicitarias (Google Ads):</strong> utilizamos Google Ads para mostrar anuncios relevantes. Google puede usar cookies para mostrar anuncios basados en sus visitas anteriores a este sitio y a otros sitios en Internet.</li>
+		</ul>
+		<div class="highlight">
+			Puede optar por no recibir publicidad personalizada de Google visitando <strong>Configuración de anuncios de Google</strong> o el sitio <strong>www.aboutads.info</strong>. También puede ajustar su navegador para rechazar cookies o utilizar el banner de consentimiento en nuestra página principal.
+		</div>
+	</div>
+
+	<div class="section-block">
+		<h2>7. Consentimiento TCPA</h2>
+		<p>Al proporcionar su número de teléfono en nuestros formularios, usted autoriza expresamente a <strong>Connecting</strong> a contactarle mediante llamadas telefónicas y/o mensajes de texto (SMS) automatizados o preregistrados, relativos a nuestros servicios de telecomunicaciones.</p>
+		<p>Este consentimiento no es condición para la compra de ningún servicio. Puede revocar su consentimiento en cualquier momento solicitando ser incluido en nuestra lista interna de "No Llamar" al <strong>+1 (888) 398-6010</strong>. Aplican tarifas de mensajes y datos.</p>
+	</div>
+
+</div>
+
+<footer class="page-footer">
+	<p>© 2026 Connecting &nbsp;·&nbsp; <a href="privacidad.html">Privacidad</a> &nbsp;·&nbsp; <a href="terminos.html">Términos</a></p>
+</footer>
+
+<a href="tel:+18883986010" class="btn-fixed">
+	<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+	Llama Ahora
+</a>
+
+</body>
+</html>
