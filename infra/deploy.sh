@@ -9,7 +9,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 echo "==> Ensamblando dist/ (solo lo publico)"
 rm -rf dist && mkdir -p dist
-cp index.html privacidad.html terminos.html robots.txt sitemap.xml dist/
+cp index.html privacidad.html terminos.html robots.txt sitemap.xml favicon.ico dist/
 cp -r images dist/images
 
 # index2.html es la variante descartada; instruction.txt es material interno.
